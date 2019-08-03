@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="252.0" prefWidth="428.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ImpressionController">
+   <children>
+      <Label layoutX="45.0" layoutY="38.0" text="Imprimate:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="listeImprimante" layoutX="144.0" layoutY="36.0" prefHeight="25.0" prefWidth="251.0" />
+      <Label layoutX="22.0" layoutY="80.0" text="Nombre de copies:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtNumCopies" layoutX="150.0" layoutY="78.0" prefHeight="25.0" prefWidth="130.0" text="1" />
+      <Button layoutX="150.0" layoutY="212.0" mnemonicParsing="false" onAction="#imprimer" prefHeight="25.0" prefWidth="130.0" text="Imprimer" />
+      <Label layoutX="45.0" layoutY="126.0" text="Format:">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField layoutX="149.0" layoutY="124.0" prefHeight="25.0" prefWidth="130.0" />
+   </children>
+</AnchorPane>

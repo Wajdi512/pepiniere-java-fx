@@ -1,0 +1,29 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+
+#rootPane {
+	-fx-background-image: url("views/images/forests-trees-road-avenue-kauri-leaves-narrow-forest-wallpaper-4k.jpg");
+
+}
+
+#homeBTNS:hover {
+	-fx-background-color: #FA8072;
+}
+
+.btnHome {
+		-fx-background-color:  #d8ffff;
+
+}
+
+.btnHome1 {
+		-fx-background-color:  #90EE90;
+
+}
+
+#header{
+		/*-fx-background-image: url("views/images/header-man.jpg");*/
+		/*-fx-background-color:  #98FB98;*/
+}
+
+#homeBody {
+	fx-background-color:  #98FB98;
+}

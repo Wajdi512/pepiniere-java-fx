@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="282.0" prefWidth="384.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.EditOuvrierController">
+   <children>
+      <TextField fx:id="txtNom" layoutX="172.0" layoutY="46.0" />
+      <TextField fx:id="txtPrenom" layoutX="172.0" layoutY="85.0" />
+      <TextField fx:id="txtFonction" layoutX="172.0" layoutY="126.0" />
+      <TextField fx:id="txtJourn" layoutX="172.0" layoutY="166.0" />
+      <Label layoutX="28.0" layoutY="50.0" prefHeight="17.0" prefWidth="52.0" text="Nom:" />
+      <Label layoutX="28.0" layoutY="89.0" prefHeight="17.0" prefWidth="52.0" text="Prénom:" />
+      <Label layoutX="28.0" layoutY="130.0" prefHeight="17.0" prefWidth="52.0" text="Fonction" />
+      <Label layoutX="28.0" layoutY="170.0" prefHeight="17.0" prefWidth="52.0" text="Journ:" />
+      <Button layoutX="165.0" layoutY="221.0" mnemonicParsing="false" onAction="#addOrUpdate" text="Ajouter" />
+   </children>
+</AnchorPane>

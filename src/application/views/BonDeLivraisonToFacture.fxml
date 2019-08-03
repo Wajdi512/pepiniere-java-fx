@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="796.0" maxWidth="1168.0" minHeight="632.0" minWidth="1050.0" prefHeight="632.0" prefWidth="1050.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.BonDeLivraisonToFactureController">
+   <children>
+      <BorderPane prefHeight="617.0" prefWidth="1072.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="172.0" prefWidth="923.0" style="-fx-background-color: #6495ED;" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXButton layoutY="38.0" onAction="#goHome" prefHeight="73.0" prefWidth="174.0" text="Home" textFill="#f5f5f5">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="41.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/Home_80px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <ImageView fitHeight="83.0" fitWidth="71.0" layoutX="827.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="68.0">
+                     <image>
+                        <Image url="@images/Services_80px.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="775.0" layoutY="37.0" text="Bon de livraisons =&gt; Factures" textFill="WHITE" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="37.0">
+                     <font>
+                        <Font name="Cooper Black" size="18.0" />
+                     </font>
+                  </Label>
+                  <AnchorPane layoutX="158.0" layoutY="133.0" prefHeight="24.0" prefWidth="170.0">
+                     <children>
+                        <TextField fx:id="txtNom" layoutX="-73.0" prefHeight="25.0" prefWidth="156.0" />
+                        <Label layoutX="138.0" layoutY="4.0" text="Prenom:" />
+                     </children>
+                  </AnchorPane>
+                  <Label layoutX="31.0" layoutY="135.0" text="Nom:" />
+                  <TextField fx:id="txtPrenom" layoutX="363.0" layoutY="133.0" />
+                  <TextField fx:id="txtTel" layoutX="608.0" layoutY="131.0" />
+                  <Label layoutX="575.0" layoutY="135.0" text="Tel" />
+                  <Button layoutX="775.0" layoutY="133.0" mnemonicParsing="false" onAction="#suavegarderFacture" prefHeight="26.0" prefWidth="146.0" text="Sauvegarder">
+                     <graphic>
+                        <ImageView fitHeight="18.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/Save_80px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <GridPane BorderPane.alignment="CENTER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="304.0" minHeight="10.0" prefHeight="45.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="579.0" minHeight="10.0" prefHeight="579.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <AnchorPane>
+                     <children>
+                        <HBox>
+                           <children>
+                              <GridPane prefHeight="45.0" prefWidth="1168.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane />
+                                    <AnchorPane GridPane.columnIndex="1" />
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" />
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" />
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" />
+                                 </children>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane GridPane.rowIndex="1">
+                     <children>
+                        <GridPane prefHeight="579.0" prefWidth="1168.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <GridPane>
+                                 <children>
+                                    <GridPane>
+                                       <children>
+                                          <AnchorPane prefHeight="235.0" prefWidth="601.0">
+                                             <children>
+                                                <Label layoutX="15.0" layoutY="22.0" text="Bons des livraisons disponibles:" />
+                                                <TableView fx:id="tableBons" layoutX="15.0" layoutY="45.0" prefHeight="190.0" prefWidth="590.0">
+                                                   <columnResizePolicy>
+                                                      <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                   </columnResizePolicy>
+                                                   <columns>
+                                                      <TableColumn fx:id="idBon" prefWidth="75.0" text="Identifiant" />
+                                                      <TableColumn fx:id="clientColumn" prefWidth="75.0" text="Client" />
+                                                      <TableColumn fx:id="telColumn" prefWidth="100.0" text="Tel" />
+                                                      <TableColumn fx:id="payeColumn" prefWidth="100.0" text="Payé" />
+                                                      <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Date " />
+                                                      <TableColumn fx:id="montatntColumn" prefWidth="75.0" text="Montant" />
+                                                   </columns>
+                                                </TableView>
+                                                <TextField fx:id="searchTxt" layoutX="27.0" layoutY="1.0" prefHeight="25.0" prefWidth="143.0" />
+                                                <Button layoutX="191.0" layoutY="1.0" mnemonicParsing="false" onAction="#chercherBons" prefHeight="25.0" prefWidth="119.0" text="Chercher" />
+                                                <Button layoutX="321.0" layoutY="1.0" mnemonicParsing="false" onAction="#voirTranche" prefHeight="25.0" prefWidth="141.0" text="Voir Tranches" />
+                                                <Button layoutX="469.0" layoutY="2.0" mnemonicParsing="false" onAction="#ajouterBon" prefHeight="25.0" prefWidth="136.0" text="Ajouter" />
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints maxHeight="256.0" minHeight="10.0" prefHeight="255.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                       <children>
+                                          <Label layoutX="28.0" layoutY="6.0" text="Achats:" />
+                                          <TableView fx:id="tablePanier" layoutX="18.0" layoutY="32.0" prefHeight="186.0" prefWidth="585.0">
+                                             <columnResizePolicy>
+                                                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                             </columnResizePolicy>
+                                             <columns>
+                                                <TableColumn fx:id="desigPanierColumn" prefWidth="75.0" text="Désignation" />
+                                                <TableColumn fx:id="qtePanierColumn" prefWidth="75.0" text="Quantité" />
+                                                <TableColumn fx:id="prixUnitPanierColumn" prefWidth="75.0" text="Prix unitaire" />
+                                                <TableColumn fx:id="prixTotalPanierColumn" prefWidth="75.0" text="Prix total" />
+                                             </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                                 <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                 </columnConstraints>
+                                 <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                 </rowConstraints>
+                              </GridPane>
+                              <AnchorPane prefHeight="567.0" prefWidth="426.0" GridPane.columnIndex="1">
+                                 <children>
+                                    <TableView fx:id="tablePanierFacture" layoutX="13.0" layoutY="47.0" prefHeight="401.0" prefWidth="404.0">
+                                       <columnResizePolicy>
+                                          <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                       </columnResizePolicy>
+                                       <columns>
+                                          <TableColumn fx:id="idBonLivrColumn" prefWidth="75.0" text="idBonLivraison" />
+                                          <TableColumn fx:id="montantCoumn" prefWidth="75.0" text="Montant" />
+                                       </columns>
+                                    </TableView>
+                                    <Button layoutX="315.0" layoutY="2.0" mnemonicParsing="false" onAction="#retirerPanier" prefHeight="25.0" prefWidth="91.0" text="Retirer">
+                                       <graphic>
+                                          <ImageView fitHeight="93.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@images/Delete%20File_80px.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Label layoutX="14.0" layoutY="6.0" text="Bon de Livraison inclus:" />
+                                    <Button layoutX="165.0" layoutY="2.0" mnemonicParsing="false" onAction="#voirPaiement" prefHeight="25.0" prefWidth="138.0" text="Voir paiement" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="679.0" minWidth="10.0" prefWidth="679.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="576.0" minWidth="10.0" prefWidth="489.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </GridPane>
+         </center>
+      </BorderPane>
+      <GridPane layoutX="-356.0" layoutY="270.0">
+         <children>
+            <AnchorPane prefHeight="35.0" prefWidth="191.0" GridPane.columnIndex="1" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" />
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+   </children>
+</AnchorPane>

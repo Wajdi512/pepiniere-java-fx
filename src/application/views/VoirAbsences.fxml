@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="605.0" prefWidth="959.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.VoirAbsenceController">
+   <children>
+      <Label layoutX="741.0" layoutY="60.0" prefHeight="17.0" prefWidth="52.0" text="Journ:" />
+      <Label layoutX="499.0" layoutY="60.0" prefHeight="17.0" prefWidth="52.0" text="Fonction" />
+      <Label layoutX="269.0" layoutY="60.0" prefHeight="17.0" prefWidth="52.0" text="Prénom:" />
+      <Label layoutX="38.0" layoutY="60.0" prefHeight="17.0" prefWidth="52.0" text="Nom:" />
+      <TextField fx:id="txtJourn" editable="false" layoutX="793.0" layoutY="56.0" />
+      <TextField fx:id="txtFonction" editable="false" layoutX="565.0" layoutY="56.0" />
+      <TextField fx:id="txtPrenom" editable="false" layoutX="334.0" layoutY="56.0" />
+      <TextField fx:id="txtNom" editable="false" layoutX="90.0" layoutY="56.0" />
+      <TableView fx:id="tableAbsence" layoutX="14.0" layoutY="279.0" prefHeight="185.0" prefWidth="421.0">
+        <columns>
+          <TableColumn fx:id="idColumn" prefWidth="75.0" text="Identifiant" />
+          <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Date Présence" />
+            <TableColumn fx:id="coutColumn" prefWidth="75.0" text="Cout" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <DatePicker fx:id="dateAbsence" layoutX="108.0" layoutY="220.0" prefHeight="25.0" prefWidth="211.0" />
+      <Button layoutX="354.0" layoutY="169.0" mnemonicParsing="false" onAction="#touverAbsences" prefHeight="25.0" prefWidth="64.0" text="Trouver" />
+      <Button layoutX="354.0" layoutY="220.0" mnemonicParsing="false" onAction="#ajouterAbsence" prefHeight="25.0" prefWidth="64.0" text="Valider" />
+      <Label layoutX="16.0" layoutY="106.0" text="Gestion présence:" />
+      <Label layoutX="10.0" layoutY="224.0" text="date présence:" />
+      <Label layoutX="34.0" layoutY="142.0" text="Début:" />
+      <Label layoutX="39.0" layoutY="182.0" text="Fin:" />
+      <TableView fx:id="tableAvance" layoutX="499.0" layoutY="264.0" prefHeight="200.0" prefWidth="421.0">
+        <columns>
+          <TableColumn fx:id="dateAvanceColumn" prefWidth="75.0" text="Date" />
+          <TableColumn fx:id="avanceColumn" prefWidth="75.0" text="Avance" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <Label layoutX="498.0" layoutY="212.0" text="Fin:" />
+      <Label layoutX="489.0" layoutY="173.0" text="Debut:" />
+      <Button layoutX="767.0" layoutY="208.0" mnemonicParsing="false" onAction="#trouverAvance" prefHeight="25.0" prefWidth="64.0" text="Trouver" />
+      <Label layoutX="497.0" layoutY="133.0" text="Avance:" />
+      <Button layoutX="767.0" layoutY="129.0" mnemonicParsing="false" onAction="#ajouterAvance" prefHeight="25.0" prefWidth="64.0" text="Ajouter" />
+      <TextField fx:id="montantAvanceTxt" layoutX="551.0" layoutY="129.0" prefHeight="25.0" prefWidth="174.0" />
+      <DatePicker fx:id="startDate" layoutX="553.0" layoutY="169.0" />
+      <DatePicker fx:id="endDate" layoutX="553.0" layoutY="208.0" />
+      <DatePicker fx:id="dateDebPresence" layoutX="121.0" layoutY="138.0" prefHeight="25.0" prefWidth="156.0" />
+      <DatePicker fx:id="dateFinPresence" layoutX="121.0" layoutY="178.0" prefHeight="25.0" prefWidth="156.0" />
+      <TextField fx:id="sommeAvance" editable="false" layoutX="125.0" layoutY="483.0" />
+      <TextField fx:id="sommeJourTravail" editable="false" layoutX="125.0" layoutY="519.0" />
+      <Label layoutX="44.0" layoutY="487.0" prefHeight="17.0" prefWidth="77.0" text="Total Avance:" />
+      <Label layoutX="49.0" layoutY="523.0" prefHeight="17.0" prefWidth="77.0" text="Salaire:" />
+      <TextField fx:id="resteSalaire" editable="false" layoutX="125.0" layoutY="555.0" />
+      <Label layoutX="52.0" layoutY="559.0" prefHeight="17.0" prefWidth="77.0" text="Reste:" />
+      <Button layoutX="295.0" layoutY="483.0" mnemonicParsing="false" onAction="#calculerReste" prefHeight="52.0" prefWidth="143.0" text="Calculer" />
+      <Separator layoutX="25.0" layoutY="92.0" prefHeight="8.0" prefWidth="917.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="17.0" AnchorPane.topAnchor="92.0" />
+      <Separator layoutX="460.0" layoutY="100.0" orientation="VERTICAL" prefHeight="497.0" prefWidth="0.0" style="-fx-background-color: #FFFFFF;" />
+      <Label layoutX="470.0" layoutY="106.0" text="Gestion Avances:" />
+      <Button layoutX="295.0" layoutY="547.0" mnemonicParsing="false" onAction="#imprimerRelever" prefHeight="46.0" prefWidth="143.0" text="Imprimer Relevé" />
+      <Button layoutX="354.0" layoutY="252.0" mnemonicParsing="false" onAction="#supprimerPresence" prefHeight="25.0" prefWidth="83.0" text="Supprimer" />
+      <Button layoutX="837.0" layoutY="240.0" mnemonicParsing="false" onAction="#supprimerAvance" prefHeight="25.0" prefWidth="83.0" text="Supprimer" />
+   </children>
+</AnchorPane>

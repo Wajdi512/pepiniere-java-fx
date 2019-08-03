@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="rootPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.LoginWindowController">
+   <children>
+      <Pane layoutX="270.0" layoutY="24.0" prefHeight="544.0" prefWidth="261.0" style="-fx-background-color: white; -fx-background-radius: 20px;">
+         <children>
+            <Label layoutX="58.0" layoutY="14.0" text="Connexion" textFill="#1d6cda">
+               <font>
+                  <Font name="Microsoft JhengHei UI Light" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="15.0" layoutY="76.0" prefHeight="54.0" prefWidth="233.0" text="Bonjour, Veuillez se connecter pour démarrer votre application." textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <JFXTextField fx:id="pseudo" focusColor="#3862dd" labelFloat="true" layoutX="28.0" layoutY="272.0" prefHeight="25.0" prefWidth="208.0" promptText="Utilisateur">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXTextField>
+            <JFXButton fx:id="btnSeConnecter" buttonType="RAISED" layoutX="79.0" layoutY="435.0" onAction="#goToHomeWindow" prefHeight="39.0" prefWidth="104.0" ripplerFill="#5773b9" style="-fx-background-color: #243f96; -fx-background-radius: 30px;" text="Se connecter" textFill="#fcf9f9">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="70.0" layoutY="491.0" prefHeight="39.0" prefWidth="122.0" text="Mot de passe oublié?" textAlignment="CENTER" wrapText="true" />
+            <ImageView fitHeight="94.0" fitWidth="68.0" layoutX="102.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/alkhayer.jpg" />
+               </image>
+            </ImageView>
+            <JFXPasswordField fx:id="password" labelFloat="true" layoutX="28.0" layoutY="339.0" prefHeight="25.0" prefWidth="208.0" promptText="Mot de passe">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </JFXPasswordField>
+         </children>
+      </Pane>
+      <JFXButton buttonType="RAISED" layoutX="685.0" layoutY="549.0" prefHeight="39.0" prefWidth="104.0" ripplerFill="#ebe4e3" style="-fx-background-color: #f81800; -fx-background-radius: 30px;" text="Fermer" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

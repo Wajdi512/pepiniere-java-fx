@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="572.0" prefWidth="923.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PrintEmptyDocumentController">
+   <children>
+      <BorderPane prefHeight="572.0" prefWidth="923.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="172.0" prefWidth="923.0" style="-fx-background-color: #6495ED;" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXButton layoutY="38.0" onAction="#goHome" prefHeight="73.0" prefWidth="174.0" text="Home" textFill="#f5f5f5">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="41.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/Home_80px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <ImageView fitHeight="83.0" fitWidth="71.0" layoutX="827.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="68.0">
+                     <image>
+                        <Image url="@images/Printer%20Maintenance_80px.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="775.0" layoutY="37.0" text="Impression" textFill="WHITE" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="37.0">
+                     <font>
+                        <Font name="Cooper Black" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="69.0" layoutY="93.0" text="Numero document:" />
+                  <TextField fx:id="txtNumero" editable="false" layoutX="223.0" layoutY="89.0" prefHeight="25.0" prefWidth="126.0" />
+                  <Label layoutX="96.0" layoutY="233.0" text="Tel Client:" />
+                  <TextField fx:id="txtTel" editable="false" layoutX="223.0" layoutY="229.0" prefHeight="25.0" prefWidth="314.0" />
+                  <TextField fx:id="txtPrenom" editable="false" layoutX="223.0" layoutY="180.0" prefHeight="25.0" prefWidth="314.0" />
+                  <Label layoutX="82.0" layoutY="184.0" text="Prénom Client:" />
+                  <Label layoutX="90.0" layoutY="136.0" text="Nom Client:" />
+                  <TextField fx:id="txtNom" editable="false" layoutX="223.0" layoutY="132.0" prefHeight="25.0" prefWidth="314.0" />
+                  <Button layoutX="411.0" layoutY="319.0" mnemonicParsing="false" onAction="#imprimer" prefHeight="25.0" prefWidth="102.0" text="Imprimer" AnchorPane.bottomAnchor="56.0" AnchorPane.leftAnchor="411.0" AnchorPane.rightAnchor="410.0" />
+                  <Label layoutX="70.0" layoutY="38.0" text="Type de document:" />
+                  <ComboBox fx:id="typeDocCB" layoutX="223.0" layoutY="34.0" prefHeight="25.0" prefWidth="314.0" />
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,1 @@
+alter table ouvriers add column date_ajout date;

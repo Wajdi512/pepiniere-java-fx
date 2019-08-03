@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="785.0" prefWidth="702.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PanierToBonController">
+   <children>
+      <Button layoutX="252.0" layoutY="254.0" mnemonicParsing="false" onAction="#ajouter" text="Ajouter" />
+      <TextField fx:id="txtQte" layoutX="82.0" layoutY="254.0" />
+      <Label layoutX="16.0" layoutY="258.0" text="Quantié:" />
+      <Label layoutX="27.0" layoutY="14.0" text="Selectioner: " />
+      <Button layoutX="302.0" layoutY="722.0" mnemonicParsing="false" onAction="#imprimer" text="Imprimer" />
+      <TableView fx:id="tablePanier" layoutX="38.0" layoutY="42.0" prefHeight="166.0" prefWidth="647.0">
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+         <columns>
+            <TableColumn fx:id="desigPanierColumn" prefWidth="75.0" text="Désignation" />
+            <TableColumn fx:id="qtePanierColumn" prefWidth="75.0" text="Quantité" />
+            <TableColumn fx:id="prixUnitPanierColumn" prefWidth="75.0" text="Prix unitaire" />
+            <TableColumn fx:id="prixTotalPanierColumn" prefWidth="75.0" text="Prix total" />
+         </columns>
+      </TableView>
+      <TableView fx:id="tablePanier1" layoutX="27.0" layoutY="293.0" prefHeight="185.0" prefWidth="647.0">
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+         <columns>
+            <TableColumn fx:id="desigPanierColumn1" prefWidth="75.0" text="Désignation" />
+            <TableColumn fx:id="qtePanierColumn1" prefWidth="75.0" text="Quantité" />
+            <TableColumn fx:id="prixUnitPanierColumn1" prefWidth="75.0" text="Prix unitaire" />
+            <TableColumn fx:id="prixTotalPanierColumn1" prefWidth="75.0" text="Prix total" />
+         </columns>
+      </TableView>
+      <TableView fx:id="tableBons" layoutX="27.0" layoutY="537.0" prefHeight="166.0" prefWidth="647.0">
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+         <columns>
+            <TableColumn fx:id="idBon" prefWidth="75.0" text="Identifiant" />
+            <TableColumn fx:id="clientColumn" prefWidth="75.0" text="Client" />
+            <TableColumn fx:id="telColumn" prefWidth="75.0" text="Tel" />
+            <TableColumn fx:id="payeColumn" prefWidth="75.0" text="Payé" />
+            <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Date " />
+            <TableColumn fx:id="avanceColumn" prefWidth="75.0" text="Avance" />
+            <TableColumn fx:id="montatntColumn" prefWidth="75.0" text="Montant" />
+            <TableColumn fx:id="montantPayColumn" prefWidth="75.0" text="Montant Payé" />
+         </columns>
+      </TableView>
+      <Button layoutX="260.0" layoutY="490.0" mnemonicParsing="false" onAction="#ajouter" text="Generer Bon de Livraison" />
+   </children>
+</AnchorPane>

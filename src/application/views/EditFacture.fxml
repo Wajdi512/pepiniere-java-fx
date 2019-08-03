@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="704.0" prefWidth="964.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.FactureEditController">
+   <children>
+      <AnchorPane fx:id="pane2" layoutX="5.0" prefHeight="575.0" prefWidth="954.0">
+         <children>
+            <Label layoutX="57.0" layoutY="32.0" text="Total" AnchorPane.leftAnchor="57.0" AnchorPane.topAnchor="32.0" />
+            <TextField fx:id="txtTotal" editable="false" layoutX="142.0" layoutY="28.0" AnchorPane.leftAnchor="142.0" AnchorPane.topAnchor="28.0" />
+            <TextField fx:id="txtAvance" layoutX="142.0" layoutY="73.0" text="0" AnchorPane.leftAnchor="142.0" AnchorPane.topAnchor="73.0" />
+            <Label layoutX="51.0" layoutY="77.0" text="Avance" AnchorPane.leftAnchor="51.0" AnchorPane.topAnchor="77.0" />
+            <TableView fx:id="tableTranches" layoutX="46.0" layoutY="284.0" prefHeight="200.0" prefWidth="518.0" AnchorPane.leftAnchor="46.0" AnchorPane.rightAnchor="390.0" AnchorPane.topAnchor="284.0">
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <columns>
+                  <TableColumn fx:id="montantTrancheCln" prefWidth="75.0" text="Montant" />
+                  <TableColumn fx:id="dateTrancheCln" prefWidth="75.0" text="Date" />
+               </columns>
+            </TableView>
+            <Button layoutX="329.0" layoutY="247.0" mnemonicParsing="false" onAction="#ajouterTranche" prefHeight="17.0" prefWidth="111.0" text="Ajouter" AnchorPane.rightAnchor="514.0" AnchorPane.topAnchor="247.0">
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/New%20Copy_16px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <TextField fx:id="txtMontantPaye" editable="false" layoutX="142.0" layoutY="123.0" />
+            <Label layoutX="46.0" layoutY="127.0" text="Montant payé:" />
+            <Button fx:id="btnSaveFacture" layoutX="425.0" layoutY="490.0" mnemonicParsing="false" onAction="#saveFacture" prefHeight="36.0" prefWidth="128.0" text="Sauvegarder" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="425.0">
+               <graphic>
+                  <ImageView fitHeight="31.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Save_80px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button layoutX="425.0" layoutY="536.0" mnemonicParsing="false" onAction="#imprimerFacture" prefHeight="27.0" prefWidth="128.0" text="Imprimer" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="425.0">
+               <graphic>
+                  <ImageView fitHeight="31.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Send%20to%20Printer_80px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <TextField fx:id="txtMontantTranche" layoutX="142.0" layoutY="247.0" AnchorPane.leftAnchor="142.0" AnchorPane.topAnchor="247.0" />
+            <Label layoutX="39.0" layoutY="251.0" text="Montant Tranche" AnchorPane.leftAnchor="39.0" AnchorPane.topAnchor="251.0" />
+            <Button layoutX="453.0" layoutY="247.0" mnemonicParsing="false" onAction="#supprimerTranche" prefHeight="17.0" prefWidth="111.0" text="Supprimer">
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Delete%20File_80px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label layoutX="50.0" layoutY="183.0" text="Remise:" />
+            <TextField fx:id="txtRemise" layoutX="142.0" layoutY="170.0" text="0" />
+            <TextField fx:id="txtCredit" layoutX="406.0" layoutY="119.0" text="0" />
+            <Label layoutX="349.0" layoutY="124.0" text="Crédit:" />
+            <Label layoutX="589.0" layoutY="220.0" text="Matricule:" />
+            <TextField fx:id="txtMatricule" layoutX="693.0" layoutY="216.0" />
+            <Label layoutX="342.0" layoutY="220.0" text="Direction" />
+            <TextField fx:id="txtDirection" layoutX="417.0" layoutY="216.0" />
+            <TextField fx:id="txtChauffeur" layoutX="142.0" layoutY="216.0" />
+            <Label layoutX="44.0" layoutY="220.0" text="chauffeur:" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="pane1" layoutX="5.0" layoutY="2.0" prefHeight="634.0" prefWidth="964.0">
+         <children>
+            <Label layoutX="42.0" layoutY="69.0" text="Articles disponibles:" AnchorPane.leftAnchor="42.0" AnchorPane.topAnchor="69.0" />
+            <Label layoutX="330.0" layoutY="26.0" text="Prénom:" AnchorPane.leftAnchor="330.0" AnchorPane.topAnchor="26.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Button layoutX="206.0" layoutY="95.0" mnemonicParsing="false" onAction="#chercherProduit" text="Chercher" AnchorPane.leftAnchor="206.0" AnchorPane.topAnchor="95.0" />
+            <Button layoutX="197.0" layoutY="356.0" mnemonicParsing="false" onAction="#validerQte" prefHeight="25.0" prefWidth="167.0" text="Modifier quantité" AnchorPane.rightAnchor="590.0" AnchorPane.topAnchor="356.0">
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Edit%20File_80px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <TextField fx:id="txtPrenom" layoutX="403.0" layoutY="27.0" AnchorPane.leftAnchor="403.0" AnchorPane.topAnchor="27.0" />
+            <Button layoutX="790.0" layoutY="95.0" mnemonicParsing="false" onAction="#ajouterProduit" prefHeight="17.0" prefWidth="111.0" text="Ajouter" AnchorPane.rightAnchor="53.0" AnchorPane.topAnchor="95.0">
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/New%20Copy_16px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <TextField fx:id="txtNom" layoutX="131.0" layoutY="27.0" AnchorPane.leftAnchor="131.0" AnchorPane.topAnchor="27.0" />
+            <Label layoutX="40.0" layoutY="325.0" text="Achats:" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="325.0" />
+            <TableView fx:id="tablePanier" layoutX="40.0" layoutY="389.0" prefHeight="200.0" prefWidth="875.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="389.0">
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <columns>
+                  <TableColumn fx:id="desigPanierColumn" prefWidth="75.0" text="Désignation" />
+                  <TableColumn fx:id="qtePanierColumn" prefWidth="75.0" text="Quantité" />
+                  <TableColumn fx:id="prixUnitPanierColumn" prefWidth="75.0" text="Prix unitaire" />
+                  <TableColumn fx:id="prixTotalPanierColumn" prefWidth="75.0" text="Prix total" />
+               </columns>
+            </TableView>
+            <Button layoutX="804.0" layoutY="356.0" mnemonicParsing="false" onAction="#supprimerProduit" prefHeight="17.0" prefWidth="111.0" text="Supprimer" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="356.0">
+               <graphic>
+                  <ImageView fitHeight="17.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Delete%20File_80px.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label layoutX="50.0" layoutY="26.0" text="Nom:" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="26.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="601.0" layoutY="26.0" text="Tel:" AnchorPane.leftAnchor="601.0" AnchorPane.topAnchor="26.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TableView fx:id="tableProduit" layoutX="40.0" layoutY="132.0" prefHeight="183.0" prefWidth="828.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="132.0">
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+               <columns>
+                  <TableColumn fx:id="designationColumn" prefWidth="75.0" text="Désignation" />
+                  <TableColumn fx:id="prixColumn" prefWidth="75.0" text="Prix" />
+                  <TableColumn fx:id="prixGrosColumn" prefWidth="75.0" text="Prix en gros" />
+                  <TableColumn fx:id="qteColumn" prefWidth="75.0" text="Quantité" />
+                  <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Date modification" />
+               </columns>
+            </TableView>
+            <TextField fx:id="txtTel" layoutX="641.0" layoutY="27.0" AnchorPane.leftAnchor="641.0" AnchorPane.topAnchor="27.0" />
+            <TextField fx:id="txtSearch" layoutX="36.0" layoutY="95.0" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="95.0" />
+            <CheckBox fx:id="grosCB" layoutX="552.0" layoutY="360.0" mnemonicParsing="false" onAction="#changerAchats" text="Gros" AnchorPane.rightAnchor="356.0" AnchorPane.topAnchor="360.0" />
+            <TextField fx:id="txtQtePanier" layoutX="36.0" layoutY="356.0" promptText="Quantité" />
+            <Label layoutX="593.0" layoutY="598.0" text="Total:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="totalLbl" layoutX="677.0" layoutY="598.0" text="0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <JFXButton contentDisplay="RIGHT" layoutX="824.0" layoutY="647.0" onAction="#next" text="Etape Suivante" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="0.0">
+         <graphic>
+            <ImageView fitHeight="42.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/Next%20page_80px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <JFXButton layoutY="647.0" onAction="#back" text="Etape Précedente" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0">
+         <graphic>
+            <ImageView fitHeight="42.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/Back%20To_80px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+   </children>
+</AnchorPane>

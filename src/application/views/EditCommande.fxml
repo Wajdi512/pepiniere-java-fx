@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="pane1" prefHeight="675.0" prefWidth="994.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CommandeEditController">
+   <children>
+      <Label layoutX="26.0" layoutY="72.0" text="Articles disponibles:" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="72.0" />
+      <Label layoutX="331.0" layoutY="26.0" text="Prénom:" AnchorPane.leftAnchor="331.0" AnchorPane.topAnchor="26.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="204.0" layoutY="96.0" mnemonicParsing="false" onAction="#chercherProduit" text="Chercher" AnchorPane.leftAnchor="204.0" AnchorPane.topAnchor="96.0" />
+      <Button layoutX="230.0" layoutY="341.0" mnemonicParsing="false" onAction="#validerQte" prefHeight="25.0" prefWidth="167.0" text="Modifier quantité" AnchorPane.rightAnchor="597.0" AnchorPane.topAnchor="341.0">
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/Edit%20File_80px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <TextField fx:id="txtPrenom" layoutX="423.0" layoutY="27.0" AnchorPane.leftAnchor="423.0" AnchorPane.topAnchor="27.0" />
+      <Button layoutX="840.0" layoutY="96.0" mnemonicParsing="false" onAction="#ajouterProduit" prefHeight="17.0" prefWidth="111.0" text="Ajouter" AnchorPane.rightAnchor="43.0" AnchorPane.topAnchor="96.0">
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/New%20Copy_16px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <TextField fx:id="txtNom" layoutX="131.0" layoutY="27.0" AnchorPane.leftAnchor="131.0" AnchorPane.topAnchor="27.0" />
+      <Label layoutX="31.0" layoutY="324.0" text="Achats:" AnchorPane.leftAnchor="31.0" AnchorPane.topAnchor="324.0" />
+      <TableView fx:id="tablePanier" layoutX="36.0" layoutY="380.0" prefHeight="200.0" prefWidth="875.0" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="43.0" AnchorPane.topAnchor="380.0">
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+         <columns>
+            <TableColumn fx:id="desigPanierColumn" prefWidth="75.0" text="Désignation" />
+            <TableColumn fx:id="qtePanierColumn" prefWidth="75.0" text="Quantité" />
+            <TableColumn fx:id="prixUnitPanierColumn" prefWidth="75.0" text="Prix unitaire" />
+            <TableColumn fx:id="prixTotalPanierColumn" prefWidth="75.0" text="Prix total" />
+         </columns>
+      </TableView>
+      <Button layoutX="840.0" layoutY="341.0" mnemonicParsing="false" onAction="#supprimerProduit" prefHeight="17.0" prefWidth="111.0" text="Supprimer" AnchorPane.rightAnchor="43.0" AnchorPane.topAnchor="341.0">
+         <graphic>
+            <ImageView fitHeight="17.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/Delete%20File_80px.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Label layoutX="50.0" layoutY="26.0" text="Nom:" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="26.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="648.0" layoutY="26.0" text="Tel:" AnchorPane.leftAnchor="648.0" AnchorPane.topAnchor="26.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableProduit" layoutX="36.0" layoutY="134.0" prefHeight="183.0" prefWidth="828.0" AnchorPane.leftAnchor="36.0" AnchorPane.rightAnchor="43.0" AnchorPane.topAnchor="134.0">
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+         <columns>
+            <TableColumn fx:id="designationColumn" prefWidth="75.0" text="Désignation" />
+            <TableColumn fx:id="prixColumn" prefWidth="75.0" text="Prix" />
+            <TableColumn fx:id="prixGrosColumn" prefWidth="75.0" text="Prix en gros" />
+            <TableColumn fx:id="qteColumn" prefWidth="75.0" text="Quantité" />
+            <TableColumn fx:id="dateColumn" prefWidth="75.0" text="Date modification" />
+         </columns>
+      </TableView>
+      <TextField fx:id="txtTel" layoutX="717.0" layoutY="27.0" AnchorPane.leftAnchor="717.0" AnchorPane.topAnchor="27.0" />
+      <TextField fx:id="txtSearch" layoutX="36.0" layoutY="96.0" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="96.0" />
+      <CheckBox fx:id="grosCB" layoutX="588.0" layoutY="345.0" mnemonicParsing="false" onAction="#changerAchats" text="Gros" AnchorPane.rightAnchor="360.0" AnchorPane.topAnchor="345.0" />
+      <TextField fx:id="txtQtePanier" layoutX="36.0" layoutY="341.0" promptText="Quantité" />
+      <Label layoutX="476.0" layoutY="590.0" text="Total:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="totalLbl" layoutX="553.0" layoutY="590.0" text="0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="397.0" layoutY="625.0" mnemonicParsing="false" onAction="#saveCommande" prefHeight="42.0" prefWidth="87.0" text="Sauvegarder" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="397.0" />
+      <Button layoutX="497.0" layoutY="625.0" mnemonicParsing="false" onAction="#imprimerCommande" prefHeight="42.0" prefWidth="87.0" text="Imprimer" />
+      <TextField fx:id="txtRemise" layoutX="130.0" layoutY="591.0" text="0" />
+      <Label layoutX="36.0" layoutY="590.0" text="Remise:">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

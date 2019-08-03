@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="546.0" prefWidth="798.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ParametresOverviewController">
+   <children>
+      <BorderPane prefHeight="546.0" prefWidth="798.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <AnchorPane prefHeight="337.0" prefWidth="798.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="64.0" layoutY="78.0" text="Nom d'utilisateur:" />
+                  <TextField fx:id="txtPseudo" layoutX="229.0" layoutY="74.0" prefHeight="25.0" prefWidth="182.0" />
+                  <PasswordField fx:id="txtMdpCourante" layoutX="230.0" layoutY="110.0" prefHeight="25.0" prefWidth="181.0" />
+                  <PasswordField fx:id="txtMdpNew" layoutX="230.0" layoutY="154.0" prefHeight="25.0" prefWidth="181.0" />
+                  <Label layoutX="54.0" layoutY="122.0" text="mot de passe actuel:" />
+                  <Label layoutX="47.0" layoutY="158.0" text="nouveau mot de passe:" />
+                  <Label layoutX="22.0" layoutY="202.0" text="Re-tapez nouveau mot de passe:" />
+                  <PasswordField fx:id="txtMdpNewVerif" layoutX="230.0" layoutY="198.0" prefHeight="25.0" prefWidth="181.0" />
+                  <Button layoutX="399.0" layoutY="299.0" mnemonicParsing="false" onAction="#sauvegarder" text="Suavegarder" />
+                  <ImageView fx:id="showCurrentPassword" fitHeight="24.0" fitWidth="78.0" layoutX="441.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Eye_80px.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="showNewPassword" fitHeight="24.0" fitWidth="78.0" layoutX="441.0" layoutY="155.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Eye_80px.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="showNewVerificationPassword" fitHeight="24.0" fitWidth="78.0" layoutX="441.0" layoutY="199.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Eye_80px.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="motDepasseCouranteLabel" layoutX="498.0" layoutY="114.0" text="Label" />
+                  <Label fx:id="nouveauMotDePasseLabel" layoutX="498.0" layoutY="158.0" text="Label" />
+                  <Label fx:id="nouveauMotDePasseVerifLabel" layoutX="498.0" layoutY="203.0" text="Label" />
+               </children>
+            </AnchorPane>
+         </center>
+         <top>
+            <AnchorPane prefHeight="172.0" prefWidth="923.0" style="-fx-background-color: #6495ED;" BorderPane.alignment="CENTER">
+               <children>
+                  <JFXButton layoutY="38.0" onAction="#goHome" prefHeight="73.0" prefWidth="174.0" text="Home" textFill="#f5f5f5">
+                     <font>
+                        <Font name="System Bold" size="28.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="41.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/Home_80px.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <ImageView fitHeight="83.0" fitWidth="71.0" layoutX="827.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="68.0">
+                     <image>
+                        <Image url="@images/Services_80px.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="775.0" layoutY="37.0" text="Paramétres" textFill="WHITE" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="37.0">
+                     <font>
+                        <Font name="Cooper Black" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
