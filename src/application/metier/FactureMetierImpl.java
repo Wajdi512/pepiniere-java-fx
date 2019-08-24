@@ -1,6 +1,5 @@
 package application.metier;
 
-import java.util.Date;
 import java.util.List;
 
 import application.dao.AbstractCommonCriteria;
@@ -18,6 +17,10 @@ import application.model.Panier;
 import application.model.Produit;
 import application.model.Tranche;
 
+/**
+ * @author Wajdi
+ *
+ */
 public class FactureMetierImpl implements FactureMetierInterface {
 
 	private FactureDao factureDao;
@@ -35,7 +38,6 @@ public class FactureMetierImpl implements FactureMetierInterface {
 
 	public FactureMetierImpl() {
 		super();
-		// TODO Auto-generated constructor stub
 		this.factureDao = new FactureDaoImpl();
 		this.produitDao = new ProduitDaoImpl();
 		this.panierDao = new PanierDaoImpl();
@@ -50,8 +52,8 @@ public class FactureMetierImpl implements FactureMetierInterface {
 
 	public void enregistrerFacture(Facture f) {
 		factureDao.addFacture(f);
-		/*mettre à jour le stock*/
-		for(Panier p: f.getProduitsAchetes()){
+		/* mettre à jour le stock */
+		for (Panier p : f.getProduitsAchetes()) {
 			Produit produit = p.getProduit();
 			produit.setQuantite(produit.getQuantite() - p.getQuantite());
 			produitDao.updateProduit(produit);
@@ -73,12 +75,11 @@ public class FactureMetierImpl implements FactureMetierInterface {
 	@Override
 	public void modifierFacture(Facture f) {
 
-
 	}
 
 	@Override
 	public void supprimerFacture(Facture f) {
-		for(Panier p: f.getProduitsAchetes()){
+		for (Panier p : f.getProduitsAchetes()) {
 			Produit produit = p.getProduit();
 			produit.setQuantite(produit.getQuantite() + p.getQuantite());
 			produitDao.updateProduit(produit);
@@ -95,25 +96,21 @@ public class FactureMetierImpl implements FactureMetierInterface {
 
 	@Override
 	public void enregistrerBonDeLivraisonToFacture(Facture f) {
-		// TODO Auto-generated method stub
 		factureDao.addFacture(f);
 	}
 
 	@Override
 	public List<Tranche> getFactureTranches(int id) {
-		// TODO Auto-generated method stub
 		return trancheDao.getTrancheByIdFacture(id);
 	}
 
 	@Override
 	public List<Panier> getFacturePaniers(int id) {
-		// TODO Auto-generated method stub
 		return panierDao.getPanierByFacture(id);
 	}
 
 	@Override
 	public void updatePanier(Panier p) {
-		// TODO Auto-generated method stub
 		Panier p1 = panierDao.getPanierById(p.getId());
 		int nvstock = p.getQuantite() - p1.getQuantite();
 		Produit prod = p.getProduit();
@@ -131,7 +128,6 @@ public class FactureMetierImpl implements FactureMetierInterface {
 
 	@Override
 	public void supprimerPanier(Panier p) {
-		// TODO Auto-generated method stub
 		Produit produit = p.getProduit();
 		produit.setQuantite(produit.getQuantite() + p.getQuantite());
 		produitDao.updateProduit(produit);
@@ -140,27 +136,22 @@ public class FactureMetierImpl implements FactureMetierInterface {
 
 	@Override
 	public void ajouterTranche(Tranche t) {
-		// TODO Auto-generated method stub
 		trancheDao.addTranche(t);
 	}
 
 	@Override
 	public void supprimerTranche(int id) {
-		// TODO Auto-generated method stub
 		trancheDao.supprimerTranche(id);
 	}
 
 	@Override
 	public List<Facture> getFactureCriteria(AbstractCommonCriteria searchCriteria) {
-		// TODO Auto-generated method stub
 		return factureDao.getFactureCriteria(searchCriteria);
 	}
 
 	@Override
 	public List<BonDeLivraison> getBonsDesLivraisons(int idFacture) {
-		// TODO Auto-generated method stub
 		return factureDao.getBonsDesLivraisons(idFacture);
 	}
-
 
 }

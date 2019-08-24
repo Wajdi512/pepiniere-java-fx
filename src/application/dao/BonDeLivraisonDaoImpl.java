@@ -7,12 +7,10 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
-import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 
 import application.model.BonDeLivraison;
-import application.model.Facture;
 
 public class BonDeLivraisonDaoImpl implements BonDeLivraisonDaoInterface {
 
@@ -21,24 +19,23 @@ public class BonDeLivraisonDaoImpl implements BonDeLivraisonDaoInterface {
 		SessionFactory factory = DBConnexion.getSessionFactory();
 		Session session = factory.getCurrentSession();
 		try {
-		session.beginTransaction();
-		session.save(bon);
-		session.getTransaction().commit();
-		}finally {
+			session.beginTransaction();
+			session.save(bon);
+			session.getTransaction().commit();
+		} finally {
 			factory.close();
 		}
 	}
-
 
 	@Override
 	public void updateBonDeLivraison(BonDeLivraison bon) {
 		SessionFactory factory = DBConnexion.getSessionFactory();
 		Session session = factory.getCurrentSession();
 		try {
-		session.beginTransaction();
-		session.update(bon);
-		session.getTransaction().commit();
-		}finally {
+			session.beginTransaction();
+			session.update(bon);
+			session.getTransaction().commit();
+		} finally {
 			factory.close();
 		}
 
@@ -49,10 +46,11 @@ public class BonDeLivraisonDaoImpl implements BonDeLivraisonDaoInterface {
 		SessionFactory factory = DBConnexion.getSessionFactory();
 		Session session = factory.getCurrentSession();
 		session.beginTransaction();
-		List<BonDeLivraison> bonDeLivraisonList = session.createQuery("from BonDeLivraison ORDER BY date DESC").setMaxResults(30).list();
+		List<BonDeLivraison> bonDeLivraisonList = session.createQuery("from BonDeLivraison ORDER BY date DESC")
+				.setMaxResults(30).list();
 		session.close();
 		factory.close();
-		return	bonDeLivraisonList;
+		return bonDeLivraisonList;
 	}
 
 	@Override
@@ -79,7 +77,7 @@ public class BonDeLivraisonDaoImpl implements BonDeLivraisonDaoInterface {
 		Session session = factory.getCurrentSession();
 		session.beginTransaction();
 		BonDeLivraison bon = (BonDeLivraison) session.load(BonDeLivraison.class, new Integer(id));
-		if(null != bon) {
+		if (null != bon) {
 			session.delete(bon);
 		}
 		session.getTransaction().commit();
@@ -91,10 +89,13 @@ public class BonDeLivraisonDaoImpl implements BonDeLivraisonDaoInterface {
 		SessionFactory factory = DBConnexion.getSessionFactory();
 		Session session = factory.getCurrentSession();
 		session.beginTransaction();
-		List<BonDeLivraison> bonDeLivraisonList = session.createQuery("from BonDeLivraison WHERE nomClient LIKE '%"+mc+"%' or prenomClient LIKE '%"+mc+"%'").list();
+		List<BonDeLivraison> bonDeLivraisonList = session
+				.createQuery(
+						"from BonDeLivraison WHERE nomClient LIKE '%" + mc + "%' or prenomClient LIKE '%" + mc + "%'")
+				.list();
 		session.close();
 		factory.close();
-		return	bonDeLivraisonList;
+		return bonDeLivraisonList;
 	}
 
 	@Override
@@ -105,35 +106,33 @@ public class BonDeLivraisonDaoImpl implements BonDeLivraisonDaoInterface {
 		List<BonDeLivraison> bonDeLivraisonList = session.createQuery("from BonDeLivraison WHERE paye = true").list();
 		session.close();
 		factory.close();
-		return	bonDeLivraisonList;
+		return bonDeLivraisonList;
 	}
-
 
 	@Override
 	public List<BonDeLivraison> getBonDeLivraisonSansFacture() {
 		SessionFactory factory = DBConnexion.getSessionFactory();
 		Session session = factory.getCurrentSession();
 		session.beginTransaction();
-		List<BonDeLivraison> bonDeLivraisonList = session.createQuery("from BonDeLivraison WHERE facture = null").list();
+		List<BonDeLivraison> bonDeLivraisonList = session.createQuery("from BonDeLivraison WHERE facture = null")
+				.list();
 		session.close();
 		factory.close();
-		return	bonDeLivraisonList;
+		return bonDeLivraisonList;
 	}
-
 
 	@Override
 	public void updateBonDeLivraisonMerge(BonDeLivraison bon) {
 		SessionFactory factory = DBConnexion.getSessionFactory();
 		Session session = factory.getCurrentSession();
 		try {
-		session.beginTransaction();
-		session.saveOrUpdate(bon);
-		session.getTransaction().commit();
-		}finally {
+			session.beginTransaction();
+			session.saveOrUpdate(bon);
+			session.getTransaction().commit();
+		} finally {
 			factory.close();
 		}
 	}
-
 
 	@Override
 	public void mergeBonDeLivraisonMerge(BonDeLivraison bon) {
@@ -141,52 +140,56 @@ public class BonDeLivraisonDaoImpl implements BonDeLivraisonDaoInterface {
 		SessionFactory factory = DBConnexion.getSessionFactory();
 		Session session = factory.getCurrentSession();
 		try {
-		session.beginTransaction();
-		session.merge(bon);
-		session.getTransaction().commit();
-		}finally {
+			session.beginTransaction();
+			session.merge(bon);
+			session.getTransaction().commit();
+		} finally {
 			factory.close();
 		}
 	}
-
 
 	@Override
 	public List<BonDeLivraison> getBonDeLivraisonCriteria(AbstractCommonCriteria searchCriteria) {
 		// TODO Auto-generated method stub
 		SessionFactory factory = DBConnexion.getSessionFactory();
 		Session session = factory.getCurrentSession();
+		List<BonDeLivraison> bonDeLivraisonList = null;
 		try {
 			session.beginTransaction();
 			Criteria search = session.createCriteria(BonDeLivraison.class);
 			if (searchCriteria.getId() != null)
 				search.add(Restrictions.eq("id", searchCriteria.getId()));
 			if (searchCriteria.getClient() != null && !searchCriteria.getClient().isEmpty()) {
-				search.add(Restrictions.ilike("nomComplet", searchCriteria.getClient(),MatchMode.ANYWHERE));
+				search.add(Restrictions.ilike("nomComplet", searchCriteria.getClient(), MatchMode.ANYWHERE));
 			}
-			if(searchCriteria.getDateDebut()!= null){
+			if (searchCriteria.getDateDebut() != null) {
 				search.add(Restrictions.ge("date", new Timestamp(searchCriteria.getDateDebut().getTime())));
-//				search.add(Restrictions.ti));
-//				search.add(Restrictions.lt("date", searchCriteria.getDateFin()));
+				// search.add(Restrictions.ti));
+				// search.add(Restrictions.lt("date",
+				// searchCriteria.getDateFin()));
 
 			}
-			if(searchCriteria.getDateFin() !=null){
+			if (searchCriteria.getDateFin() != null) {
 				search.add(Restrictions.le("date", new Timestamp(searchCriteria.getDateFin().getTime())));
-//				search.add(Restrictions.ti));
-//				search.add(Restrictions.lt("date", searchCriteria.getDateFin()));
+				// search.add(Restrictions.ti));
+				// search.add(Restrictions.lt("date",
+				// searchCriteria.getDateFin()));
 
 			}
-			if(searchCriteria.getChauffeur()!=null && !searchCriteria.getChauffeur().isEmpty())
+			if (searchCriteria.getChauffeur() != null && !searchCriteria.getChauffeur().isEmpty())
 				search.add(Restrictions.ilike("chauffeur", searchCriteria.getChauffeur()));
 
-			if(searchCriteria.isPaye()!= null) {
+			if (searchCriteria.isPaye() != null) {
 				search.add(Restrictions.eq("paye", searchCriteria.isPaye()));
 
 			}
-			List<BonDeLivraison> bonDeLivraisonList = search.list();
-			return bonDeLivraisonList;
+			bonDeLivraisonList = search.list();
 		} finally {
+			session.close();
 			factory.close();
 		}
+		return bonDeLivraisonList;
+
 	}
 
 	@Override
@@ -201,19 +204,19 @@ public class BonDeLivraisonDaoImpl implements BonDeLivraisonDaoInterface {
 			if (searchCriteria.getId() != null)
 				search.add(Restrictions.eq("id", searchCriteria.getId()));
 			if (searchCriteria.getClient() != null && !searchCriteria.getClient().isEmpty()) {
-				search.add(Restrictions.ilike("nomComplet", searchCriteria.getClient(),MatchMode.ANYWHERE));
+				search.add(Restrictions.ilike("nomComplet", searchCriteria.getClient(), MatchMode.ANYWHERE));
 			}
-			if(searchCriteria.getDateDebut()!= null && searchCriteria.getDateFin() !=null)
+			if (searchCriteria.getDateDebut() != null && searchCriteria.getDateFin() != null)
 				search.add(Restrictions.between("date", searchCriteria.getDateDebut(), searchCriteria.getDateFin()));
-			if(searchCriteria.getChauffeur()!=null && !searchCriteria.getChauffeur().isEmpty())
+			if (searchCriteria.getChauffeur() != null && !searchCriteria.getChauffeur().isEmpty())
 				search.add(Restrictions.ilike("chauffeur", searchCriteria.getChauffeur()));
 
-			if(searchCriteria.isPaye()!= null) {
+			if (searchCriteria.isPaye() != null) {
 				search.add(Restrictions.eq("paye", searchCriteria.isPaye()));
 
 			}
 			search.setProjection(Projections.sum("montant"));
-			 total = (double) search.uniqueResult();
+			total = (double) search.uniqueResult();
 		} finally {
 			factory.close();
 		}
@@ -222,7 +225,6 @@ public class BonDeLivraisonDaoImpl implements BonDeLivraisonDaoInterface {
 
 	@Override
 	public Double getMontantPayeCriteria(AbstractCommonCriteria searchCriteria) {
-		// TODO Auto-generated method stub
 		SessionFactory factory = DBConnexion.getSessionFactory();
 		Session session = factory.getCurrentSession();
 		double total = 0;
@@ -232,20 +234,21 @@ public class BonDeLivraisonDaoImpl implements BonDeLivraisonDaoInterface {
 			if (searchCriteria.getId() != null)
 				search.add(Restrictions.eq("id", searchCriteria.getId()));
 			if (searchCriteria.getClient() != null && !searchCriteria.getClient().isEmpty()) {
-				search.add(Restrictions.ilike("nomComplet", searchCriteria.getClient(),MatchMode.ANYWHERE));
+				search.add(Restrictions.ilike("nomComplet", searchCriteria.getClient(), MatchMode.ANYWHERE));
 			}
-			if(searchCriteria.getDateDebut()!= null && searchCriteria.getDateFin() !=null)
+			if (searchCriteria.getDateDebut() != null && searchCriteria.getDateFin() != null)
 				search.add(Restrictions.between("date", searchCriteria.getDateDebut(), searchCriteria.getDateFin()));
-			if(searchCriteria.getChauffeur()!=null && !searchCriteria.getChauffeur().isEmpty())
+			if (searchCriteria.getChauffeur() != null && !searchCriteria.getChauffeur().isEmpty())
 				search.add(Restrictions.ilike("chauffeur", searchCriteria.getChauffeur()));
 
-			if(searchCriteria.isPaye()!= null) {
+			if (searchCriteria.isPaye() != null) {
 				search.add(Restrictions.eq("paye", searchCriteria.isPaye()));
 
 			}
 			search.setProjection(Projections.sum("montantPaye"));
-			 total = (double) search.uniqueResult();
+			total = (double) search.uniqueResult();
 		} finally {
+			session.close();
 			factory.close();
 		}
 		return total;

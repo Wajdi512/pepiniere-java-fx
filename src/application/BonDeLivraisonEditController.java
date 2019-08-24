@@ -1,19 +1,14 @@
 package application;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-import application.dao.AbstractCommonCriteria;
-import application.dao.BonDeLivraisonDaoImpl;
 import application.dao.ProduitDao;
 import application.dao.ProduitDaoImpl;
 import application.metier.BonDeLivraisonMetierImpl;
 import application.metier.BonDeLivraisonMetierInterface;
-import application.metier.FactureMetierImpl;
 import application.model.BonDeLivraison;
-import application.model.Facture;
 import application.model.Panier;
 import application.model.Produit;
 import application.model.Tranche;
@@ -25,14 +20,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
