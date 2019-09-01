@@ -21,14 +21,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
@@ -38,7 +38,6 @@ public class FactureEditController {
 	private ProduitDao produitDao;
 	private FactureMetierInterface factureMetier;
 	private Facture facture;
-	private Facture copieFacture;
 	private List<Panier> paniersList;
 	private List<Tranche> tranches;
 	private Main mainApp;
@@ -47,7 +46,7 @@ public class FactureEditController {
 	private AnchorPane pane1;
 	@FXML
 	private AnchorPane pane2;
-	/*Facture*/
+	/* Facture */
 	@FXML
 	private TextField txtNom;
 	@FXML
@@ -73,9 +72,9 @@ public class FactureEditController {
 	@FXML
 	private TextField txtChauffeur;
 
-	/*Fin Facture*/
+	/* Fin Facture */
 
-	/*Produit*/
+	/* Produit */
 	@FXML
 	private TextField txtSearch;
 	@FXML
@@ -94,9 +93,9 @@ public class FactureEditController {
 
 	@FXML
 	private TableColumn<Produit, Integer> dateColumn;
-	/*Fin produit*/
+	/* Fin produit */
 
-	/*Panier*/
+	/* Panier */
 	@FXML
 	private TableView<Panier> tablePanier;
 	@FXML
@@ -117,8 +116,8 @@ public class FactureEditController {
 	@FXML
 	private Label totalLbl;
 
-	/*Fin Panier*/
-	/*Tranche*/
+	/* Fin Panier */
+	/* Tranche */
 	@FXML
 	private TableView<Tranche> tableTranches;
 	@FXML
@@ -126,8 +125,7 @@ public class FactureEditController {
 	@FXML
 	private TableColumn<Tranche, Date> dateTrancheCln;
 
-
-	/*Tranche*/
+	/* Tranche */
 
 	@FXML
 	private Button btnSaveFacture;
@@ -144,13 +142,13 @@ public class FactureEditController {
 		this.produitDao = new ProduitDaoImpl();
 		tableProduit.setItems(FXCollections.observableArrayList(produitDao.listProduit()));
 		showSlide = 0;
-		/*initialisation table panier*/
-		desigPanierColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getProduit().getDesignation()));
+		/* initialisation table panier */
+		desigPanierColumn.setCellValueFactory(
+				cellData -> new SimpleStringProperty(cellData.getValue().getProduit().getDesignation()));
 		qtePanierColumn.setCellValueFactory(new PropertyValueFactory<Panier, Integer>("quantite"));
-		prixUnitPanierColumn.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getProduit().getPrix()).asObject());
+		prixUnitPanierColumn.setCellValueFactory(
+				cellData -> new SimpleDoubleProperty(cellData.getValue().getProduit().getPrix()).asObject());
 		prixTotalPanierColumn.setCellValueFactory(new PropertyValueFactory<Panier, Double>("total"));
-
-
 
 		factureMetier = new FactureMetierImpl();
 		txtAvance.textProperty().addListener((observale, oldValue, newValue) -> {
@@ -159,26 +157,25 @@ public class FactureEditController {
 
 		txtRemise.textProperty().addListener((observale, oldValue, newValue) -> {
 			txtMontantPaye.setText(calulerTotalPaye() + "");
-			txtCredit.setText(this.calculerCredit()+"");
+			txtCredit.setText(this.calculerCredit() + "");
 		});
-		/* initialisation de table tranches*/
+		/* initialisation de table tranches */
 		montantTrancheCln.setCellValueFactory(new PropertyValueFactory<Tranche, Double>("montant"));
 		dateTrancheCln.setCellValueFactory(new PropertyValueFactory<Tranche, Date>("date"));
 		/*----*/
 
-
 	}
 
-	public void translateAnimation(double duration, Node node, double byX){
+	public void translateAnimation(double duration, Node node, double byX) {
 		TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(duration), node);
 		translateTransition.setByX(byX);
 		translateTransition.play();
 	}
 
 	@FXML
-	public void back(ActionEvent event){
+	public void back(ActionEvent event) {
 		System.out.println("back");
-		if(showSlide == 1) {
+		if (showSlide == 1) {
 			translateAnimation(0.5, pane2, 2000);
 			translateAnimation(0.5, pane1, 2000);
 			showSlide--;
@@ -186,9 +183,9 @@ public class FactureEditController {
 	}
 
 	@FXML
-	public void next(ActionEvent event){
+	public void next(ActionEvent event) {
 		System.out.println("next");
-		if(showSlide == 0) {
+		if (showSlide == 0) {
 			txtTotal.setText(totalLbl.getText());
 			translateAnimation(0.5, pane1, -2000);
 			translateAnimation(0.5, pane2, -2000);
@@ -196,11 +193,10 @@ public class FactureEditController {
 		}
 	}
 
-
 	@FXML
-	public void chercherProduit(){
-	String mc = txtSearch.getText();
-	tableProduit.setItems(FXCollections.observableArrayList(produitDao.listProduitByMC(mc)));
+	public void chercherProduit() {
+		String mc = txtSearch.getText();
+		tableProduit.setItems(FXCollections.observableArrayList(produitDao.listProduitByMC(mc)));
 	}
 
 	@FXML
@@ -222,7 +218,7 @@ public class FactureEditController {
 			}
 			paniersList.add(p);
 			totalLbl.setText(calculerTotalFacture() + "");
-			txtCredit.setText(this.calculerCredit()+"");
+			txtCredit.setText(this.calculerCredit() + "");
 			tableProduit.getItems().remove(selectedProduct);
 			tableProduit.refresh();
 
@@ -235,23 +231,23 @@ public class FactureEditController {
 	}
 
 	@FXML
-	public void supprimerProduit(){
+	public void supprimerProduit() {
 		Panier selectedPanier = tablePanier.getSelectionModel().getSelectedItem();
-		if(selectedPanier != null) {
+		if (selectedPanier != null) {
 
 			tableProduit.getItems().add(selectedPanier.getProduit());
 			if (this.facture.getId() != 0) {
 				factureMetier.supprimerPanier(selectedPanier);
 			}
 			tableProduit.refresh();
-			totalLbl.setText(calculerTotalFacture()+"");
+			totalLbl.setText(calculerTotalFacture() + "");
 			tablePanier.getItems().remove(selectedPanier);
 			paniersList.remove(selectedPanier);
 			tablePanier.refresh();
 			totalLbl.setText(calculerTotalFacture() + "");
-			txtCredit.setText(this.calculerCredit()+"");
+			txtCredit.setText(this.calculerCredit() + "");
 
-		}else {
+		} else {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Alerte");
 			alert.setHeaderText("Veuillez sélectionner un produit acheté!");
@@ -272,8 +268,8 @@ public class FactureEditController {
 				selectedPanier.calculerTotal();
 			}
 			tablePanier.refresh();
-			totalLbl.setText(calculerTotalFacture()+"");
-			txtCredit.setText(this.calculerCredit()+"");
+			totalLbl.setText(calculerTotalFacture() + "");
+			txtCredit.setText(this.calculerCredit() + "");
 
 		} else {
 			Alert alert = new Alert(AlertType.INFORMATION);
@@ -284,34 +280,35 @@ public class FactureEditController {
 
 	}
 
-
 	@FXML
 	public void changerAchats() {
 
 		if (grosCB.isSelected()) {
-			prixUnitPanierColumn.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getProduit().getPrixGros()).asObject());
-			for(Panier p: paniersList){
+			prixUnitPanierColumn.setCellValueFactory(
+					cellData -> new SimpleDoubleProperty(cellData.getValue().getProduit().getPrixGros()).asObject());
+			for (Panier p : paniersList) {
 				p.calculerTotalGros();
 			}
 			tablePanier.refresh();
-		}else{
-			prixUnitPanierColumn.setCellValueFactory(cellData -> new SimpleDoubleProperty(cellData.getValue().getProduit().getPrix()).asObject());
-			for(Panier p: paniersList){
+		} else {
+			prixUnitPanierColumn.setCellValueFactory(
+					cellData -> new SimpleDoubleProperty(cellData.getValue().getProduit().getPrix()).asObject());
+			for (Panier p : paniersList) {
 				p.calculerTotal();
 			}
 			tablePanier.refresh();
 		}
-		totalLbl.setText(calculerTotalFacture()+"");
-		txtTotal.setText(calculerTotalFacture()+"");
-		txtCredit.setText(this.calculerCredit()+"");
+		totalLbl.setText(calculerTotalFacture() + "");
+		txtTotal.setText(calculerTotalFacture() + "");
+		txtCredit.setText(this.calculerCredit() + "");
 	}
 
 	@FXML
-	public void saveFacture(){
+	public void saveFacture() {
 		double avance = 0;
 		double montant = 0;
 		double montantPaye = 0;
-		try{
+		try {
 
 			avance = Double.parseDouble(txtAvance.getText());
 			montant = Double.parseDouble(txtTotal.getText());
@@ -327,29 +324,30 @@ public class FactureEditController {
 			facture.setPaye(facture.getMontantPaye() == facture.getMontant());
 			facture.setDate(new Date());
 			this.facture.setRemise(Double.parseDouble(txtRemise.getText()));
-			facture.setMatricule(txtMatricule.getText());
-			facture.setChauffeur(txtChauffeur.getText());
-			facture.setDirection(txtDirection.getText());
-			if(facture.getId() == 0) {
+			if (txtMatricule.getText() != null)
+				facture.setMatricule(txtMatricule.getText());
+			if (txtChauffeur.getText() != null)
+				facture.setChauffeur(txtChauffeur.getText());
+			if (txtDirection.getText() != null)
+				facture.setDirection(txtDirection.getText());
+			if (facture.getId() == 0) {
 				factureMetier.enregistrerFacture(facture);
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Facture sauvegardé");
 				alert.setHeaderText("La facture a été enregistré.");
 				Optional<ButtonType> result = alert.showAndWait();
-			}
-			else {
-				factureMetier.updateFacture(facture,null);
+			} else {
+				factureMetier.updateFacture(facture, null);
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Facture Modifié");
 				alert.setHeaderText("La facture a été modifiée correctement.");
 				Optional<ButtonType> result = alert.showAndWait();
 			}
-		}finally{
+		} finally {
 
 		}
 
 	}
-
 
 	public Main getMainApp() {
 		return mainApp;
@@ -366,42 +364,45 @@ public class FactureEditController {
 	public void setFacture(Facture facture) {
 		this.facture = facture;
 		txtNom.setText("");
-		if(facture.getNomClient()!= null) txtNom.setText(facture.getNomClient());
+		if (facture.getNomClient() != null)
+			txtNom.setText(facture.getNomClient());
 		txtPrenom.setText("");
-		if(facture.getPrenomClient()!= null) txtNom.setText(facture.getPrenomClient());
+		if (facture.getPrenomClient() != null)
+			txtNom.setText(facture.getPrenomClient());
 		txtChauffeur.setText("");
-		if(facture.getChauffeur()!= null) txtNom.setText(facture.getChauffeur());
+		if (facture.getChauffeur() != null)
+			txtNom.setText(facture.getChauffeur());
 		txtDirection.setText("");
-		if(facture.getDirection()!= null) txtNom.setText(facture.getDirection());
-		if(facture.getProduitsAchetes().isEmpty()) {
+		if (facture.getDirection() != null)
+			txtNom.setText(facture.getDirection());
+		if (facture.getProduitsAchetes().isEmpty()) {
 			paniersList = new ArrayList<Panier>();
-		}
-		else {
+		} else {
 			paniersList = facture.getProduitsAchetes();
 		}
-		if(facture.getTranches().isEmpty()) {
+		if (facture.getTranches().isEmpty()) {
 			tranches = new ArrayList<Tranche>();
 		} else {
 			tranches = facture.getTranches();
 		}
 		tableTranches.setItems(FXCollections.observableArrayList(tranches));
 		tablePanier.setItems(FXCollections.observableArrayList(paniersList));
-		for(Panier p : facture.getProduitsAchetes()) {
+		for (Panier p : facture.getProduitsAchetes()) {
 			tableProduit.getItems().remove(p.getProduit());
 		}
-		/*info facture*/
+		/* info facture */
 		txtNom.setText(facture.getNomClient());
 		txtPrenom.setText(facture.getPrenomClient());
 		txtTel.setText(facture.getTelClient());
-		txtAvance.setText(facture.getAvance()+"");
-		txtMontantPaye.setText(facture.getMontantPaye()+"");
-		txtTotal.setText(facture.getMontant()+"");
-		totalLbl.setText(facture.getMontant()+"");
-		txtCredit.setText(facture.getCredit()+"");
-		txtRemise.setText(facture.getRemise()+"");
+		txtAvance.setText(facture.getAvance() + "");
+		txtMontantPaye.setText(facture.getMontantPaye() + "");
+		txtTotal.setText(facture.getMontant() + "");
+		totalLbl.setText(facture.getMontant() + "");
+		txtCredit.setText(facture.getCredit() + "");
+		txtRemise.setText(facture.getRemise() + "");
 		txtChauffeur.setText(facture.getChauffeur());
-		if(facture.getDirection()!=null)
-		txtDirection.setText(facture.getDirection());
+		if (facture.getDirection() != null)
+			txtDirection.setText(facture.getDirection());
 		txtMatricule.setText(facture.getMatricule());
 		if (this.facture.getId() != 0) {
 			txtCredit.setText(this.facture.getCredit() + "");
@@ -417,7 +418,7 @@ public class FactureEditController {
 
 	private double calculerTotalFacture() {
 		double somme = 0;
-		for(Panier p : tablePanier.getItems()) {
+		for (Panier p : tablePanier.getItems()) {
 			somme += p.getTotal();
 		}
 		return somme;
@@ -425,8 +426,8 @@ public class FactureEditController {
 
 	private double calulerTotalPaye() {
 		double somme = Double.parseDouble(txtAvance.getText());
-		if(facture.getTranches() != null) {
-			for(Tranche t: facture.getTranches()) {
+		if (facture.getTranches() != null) {
+			for (Tranche t : facture.getTranches()) {
 				somme += t.getMontant();
 			}
 		}
@@ -435,7 +436,7 @@ public class FactureEditController {
 
 	@FXML
 	public void ajouterTranche() {
-		if(txtMontantTranche.getText()!=null) {
+		if (txtMontantTranche.getText() != null) {
 			double montantTranche = Double.parseDouble(txtMontantTranche.getText());
 			Tranche t = new Tranche();
 			t.setDate(new Date());
@@ -447,8 +448,8 @@ public class FactureEditController {
 				factureMetier.ajouterTranche(t);
 			}
 			tableTranches.setItems(FXCollections.observableArrayList(tranches));
-			txtMontantPaye.setText(calulerTotalPaye()+"");
-			txtCredit.setText(this.calculerCredit()+"");
+			txtMontantPaye.setText(calulerTotalPaye() + "");
+			txtCredit.setText(this.calculerCredit() + "");
 
 		}
 	}
@@ -470,7 +471,7 @@ public class FactureEditController {
 	@FXML
 	public void imprimerFacture() {
 		if (facture.getId() != 0) {
-			mainApp.printerWindow(facture,grosCB.isSelected());
+			mainApp.printerWindow(facture, grosCB.isSelected());
 		} else {
 			Alert alert = new Alert(AlertType.WARNING);
 			alert.setTitle("Attention!");
@@ -478,6 +479,7 @@ public class FactureEditController {
 			Optional<ButtonType> result = alert.showAndWait();
 		}
 	}
+
 	private double calculerCredit() {
 		double remise = 0;
 		if (txtRemise.getText().length() > 0)
